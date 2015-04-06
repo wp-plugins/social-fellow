@@ -23,7 +23,7 @@ It also allows to share each active post or page directly from its admin panel.
 
 == Screenshots == 
 
-1. screenshot-1.png
+1. screenshot-1.png View of the panel of the plugin
 
 == Changelog ==
 
