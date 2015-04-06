@@ -36,14 +36,4 @@ It also allows to share each active post or page directly from its admin panel.
 = 1.0 =
 
 
-== Upgrade Notice ==
-
-
-
-== Arbitrary section ==
-
-
-
-== A brief Markdown Example ==
-
 
