@@ -18,22 +18,16 @@ It also allows to share each active post or page directly from its admin panel.
 
 == Installation ==
 
-
-1. Upload `social-fellow` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-
-
-== Frequently Asked Questions ==
-
-
+1. Upload `social-fellow` to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Screenshots == 
 
-1. social-fellow.jpg
+1. screenshot-1.png
 
 == Changelog ==
 
 = 1.0 =
-
+* First stable version
 
 
