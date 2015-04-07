@@ -33,6 +33,7 @@ With this plugin you can:
 == Screenshots == 
 
 1. screenshot-1.png View of the panel of the plugin
+banner-1544×500.png
 
 == Changelog ==
 
