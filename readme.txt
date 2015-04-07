@@ -18,7 +18,7 @@ It also allows to share each active post or page directly from its admin panel.
 
 With this plugin you can:
 
-* View how many times your active and
+* View how many times your active posts and entries has been shared in twitter, G+, Facebook and Linkedin.
 * Tweet an active post or page directly from de plugin admin panel.
 * Like in facebook an active post or page directly from de plugin admin panel.
 * Give plus one of Google + to an active post or page directly from de plugin admin panel.
