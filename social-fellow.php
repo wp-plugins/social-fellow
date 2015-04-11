@@ -40,6 +40,8 @@ if ( ! class_exists( 'social_fellow' ) ) {
 		 */
 		public function register_global_hooks() {
 			add_action('admin_enqueue_scripts', array($this,'add_css'));
+                        add_action( 'edit_form_after_title', array($this,'add_social_after_title') );
+                      
 		} 
                 /**
 		 * Add CSS needed for the plugin
@@ -48,14 +50,54 @@ if ( ! class_exists( 'social_fellow' ) ) {
 		    wp_register_style('social_fellow', plugins_url('style.css', __FILE__));
                     wp_enqueue_style( 'social_fellow' );
 		}  
-		
+                
+                function add_social_after_title() {
+                    ?>
+                    <div id="fb-root"></div>
+                            <script>(function(d, s, id) {
+                              var js, fjs = d.getElementsByTagName(s)[0];
+                              if (d.getElementById(id)) return;
+                              js = d.createElement(s); js.id = id;
+                              js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=448388558529572&version=v2.3";
+                              fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));</script>
+                            
+                            <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                            
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            
+                            <script src="https://apis.google.com/js/platform.js" async defer>
+                                {lang: 'en'}
+                            </script>
+                    <?php
+                    $id_post = get_the_id();
+                    $permalink = get_permalink($id_post);
+                    global $table_prefix;
+                    global $wpdb;
+                    $table = $table_prefix . "posts";
+                    $consulta = "SELECT post_author FROM $table WHERE ID='$id_post'";
+                    $resultado = $wpdb->get_results( $consulta );
+                    $id_entry_author = $resultado[0]-> post_author;
+                    $entry_author = $this -> get_entry_author($id_entry_author);
+                    echo "<br/><div class='quicktags-toolbar wp-editor-container'>";
+                    echo "<table><tr><th>Author</th><th>Facebook</th><th>Twitter</th><th>Google+</th><th>Linkedin</th></tr>";
+                    echo "<td>". $entry_author . "</td>";
+                    echo "<td><div class='fb-like' data-href='{$permalink}' data-layout='button_count' data-action='like' data-show-faces='false' data-share='false'></div></td>";
+                    echo "<td> <a href='{$permalink}' data-href='https://twitter.com/share' data-url='{$permalink}' class='twitter-share-button'>Tweet</a>  </td> ";
+                    echo "<td><div class='g-plusone' data-size='small' data-href='{$permalink}'></div></td>";
+                    echo "<td><script type='IN/Share' data-url='{$permalink}' data-counter='right'></script></td></tr></table></div><br/>";
+                                    
+                }
+	                  
 		/**
 		 * Handles activation tasks, such as registering the uninstall hook.
 		 */
 		public function activation() {
 			register_uninstall_hook( __FILE__, array( __CLASS__, 'uninstall' ) );
+                       
+                        
 		}
-
+               
 		/**
 		 * Handles deactivation tasks, such as deleting plugin options.
 		 */
@@ -101,7 +143,7 @@ if ( ! class_exists( 'social_fellow' ) ) {
 			
 			add_options_page('Social Fellow Options', 'Social Fellow', 'manage_options', 'socialfellow', array($this, 'settings_page'));
 		}
-
+                        
 		/**
 		 * Admin: settings page
 		 */
@@ -162,13 +204,18 @@ if ( ! class_exists( 'social_fellow' ) ) {
                                     }else{
                                         $current_page = 1;
                                     }
-                                    $current_entries = $current_page * 10;
+                                    if ($pages_entries_counter > 10){
+                                        $current_entries = $current_page * 10;
+                                    }else{
+                                        $current_entries = 0; //$pages_entries_counter;
+                                    }
+                                    
                                     global $table_prefix;
                                     $table = $table_prefix . "posts";
                                    
                                     $consulta = "SELECT post_title, ID, post_name, post_type, post_author FROM $table WHERE post_status = 'publish' && (post_type ='post' || post_type='page') ORDER BY ID ASC LIMIT 10 OFFSET {$current_entries}";
                                     $resultado = $wpdb->get_results( $consulta );
-                                    echo "<table><tr><th>Name</th><th>Author</th><th>Facebook</th><th>Twitter</th><th>Google+</th><th>Linkedin</th><tr>";
+                                    echo "<table><tr><th>Name</th><th>Author</th><th>Facebook</th><th>Twitter</th><th>Google+</th><th>Linkedin</th></tr>";
                                     foreach ( $resultado as $fila ):
                                        
                                        $permalink = get_permalink( $fila->ID );
