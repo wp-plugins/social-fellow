@@ -52,3 +52,6 @@ From version 2.0 you can see in the edit panel of each entry and post its social
 * Issues with few entries are solved.
 * Added shared buttons to each page & post edit pages.
 
+= 2.0.1 =
+* Improved pagination
+

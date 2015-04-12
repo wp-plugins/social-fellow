@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Social Fellow
-Description: List how many times your content is shared in different social networks. Also Allows to shared it from an internal panel or from the page edit panel.
-Version: 2.0 
+Description: Measure the social metrics of your publicatiosn. List how many times your content is shared in different social networks. Also Allows to shared it from an internal panel or from the page edit panel.
+Version: 2.0.1
 Author: Pedro Escudero
 Author URI: http://es.linkedin.com/in/pedroescuderozumel/es
 Plugin URI: http://github.com/social-fellow
@@ -181,7 +181,7 @@ if ( ! class_exists( 'social_fellow' ) ) {
                                 
 				<h2>Description</h2>
 				<p>
-				 This plugin provides you a list of your current entries  & pages and the number of times that each one of them have been shared in 
+				 This plugin provides you a list of your current active entries & pages and the number of times that each one of them have been shared in 
                                  Twitter, Facebook, Google+ and Linkedin.
 				</p>
                                 <p>
@@ -198,14 +198,14 @@ if ( ! class_exists( 'social_fellow' ) ) {
 				
                                <?php
                                
-                                    $number_of_pages = (round( $pages_entries_counter /10 ))-1;
+                                    $number_of_pages = ceil( $pages_entries_counter /10 );
                                     if($_GET['pa']){
                                         $current_page = $_GET['pa'];
                                     }else{
                                         $current_page = 1;
                                     }
-                                    if ($pages_entries_counter > 10){
-                                        $current_entries = $current_page * 10;
+                                    if ($pages_entries_counter > 10 && $current_page >1){
+                                        $current_entries = ($current_page -1) * 10;
                                     }else{
                                         $current_entries = 0; //$pages_entries_counter;
                                     }
