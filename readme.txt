@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: PedroEscudero
 Donate link: http://www.dravetfoundation.eu/como-ayudar/hazte-colaborador/
-Tags: social, social counter, facebook shares, twitter shares, linkedin shares, google pluses, social share
+Tags: social, social counter, facebook shares, twitter shares, linkedin shares, google pluses, social share, social count, social counter, social metrics
 Requires at least: 3.0.1
 Tested up to: 4.1.1
 Stable tag: 3.5.1
