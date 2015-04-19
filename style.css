@@ -1,0 +1,12 @@
+.page-numbers li{ 
+    text-align: center;
+    display: inline-block;   
+}
+td{
+    padding: 5px;  
+    padding-left: 30px;
+}
+
+#social-fellow-menu-bar{
+	float:right;
+}
