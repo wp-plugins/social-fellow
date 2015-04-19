@@ -55,3 +55,8 @@ From version 2.0 you can see in the edit panel of each entry and post its social
 = 2.0.1 =
 * Improved pagination
 
+= 2.1 =
+
+* It is possible to select how many entries to show at the admin panel of the plugin.
+
+
